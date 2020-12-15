@@ -5,7 +5,34 @@
  * @format
  * @flow strict-local
  */
+///Codigo Edgar
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack'
+import login from './src/layouts/login'
+import registro from './src/layouts/register'
+const Stack = createStackNavigator();
+function MyStack() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="login" component={login} />
+      <Stack.Screen name="registro" component={registro} />
+    </Stack.Navigator>
+  );
+}
 
+export default function App() {
+  return (
+    <NavigationContainer>
+      <MyStack />
+    </NavigationContainer>
+  );
+}
+
+
+
+///Codigo Edagr
+ /*
 import React from 'react';
 import {
   SafeAreaView,
@@ -112,3 +139,4 @@ const styles = StyleSheet.create({
 });
 
 export default App;
+*/
