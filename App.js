@@ -8,7 +8,7 @@
 ///Codigo Edgar
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native'
-import { createStackNavigator } from '@react-navigation/stack'
+import { createStackNavigator,StatusBar } from '@react-navigation/stack'
 import login from './src/layouts/login'
 import registro from './src/layouts/register'
 const Stack = createStackNavigator();
