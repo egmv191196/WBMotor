@@ -2,8 +2,8 @@
 import React from 'react';
 import { StatusBar } from 'react-native'
 import { StyleSheet, Text, View, Button } from 'react-native';
-import Logo from './components/Logo';
-import FormRegistro from './components/FormRegistro';
+import Logo from '../components/Logo';
+import FormRegistro from '../components/FormRegistro';
 export default function App() {
   return (
     <View style={styles.container}>
