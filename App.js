@@ -11,12 +11,24 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator,StatusBar } from '@react-navigation/stack'
 import login from './src/layouts/login'
 import registro from './src/layouts/register'
+import ventana from './src/layouts/ventana'
+import draw from './src/layouts/Drawer'
 const Stack = createStackNavigator();
 function MyStack() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="login" component={login} />
-      <Stack.Screen name="registro" component={registro} />
+      <Stack.Screen name="login" component={login} options={{ 
+        headerShown: false
+       }}/>
+      <Stack.Screen name="registro" component={registro} options={{ 
+        headerShown: false
+       }} />
+      <Stack.Screen name="ventana" component={ventana} options={{ 
+        headerShown: false
+       }}/>
+      <Stack.Screen name="draw" component={draw} options={{ 
+        headerShown: false
+       }}/>
     </Stack.Navigator>
   );
 }

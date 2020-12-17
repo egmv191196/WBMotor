@@ -1,24 +1,22 @@
 import React from 'react';
 import { StatusBar } from 'react-native'
-import { 
-  StyleSheet, 
-  Text, 
-  View, 
-  TouchableOpacity 
-} from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Button} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import Logo from './components/Logo';
-import Form from './components/Form';
+import Logo from '../components/Logo';
+import Form from '../components/Form';
+import draw from './Drawer';
 export default function App({ navigation }) {
   return (
     <View style={styles.container}>
         <Logo/>
         <Form/>
+        <Button
+          title="Iniciar Sesion" onPress={() => navigation.navigate('draw')}
+        />
         <View style={styles.registar}>
           <Text style={styles.registarText}>¿No tiene una cuenta? </Text>
-          <TouchableOpacity style={styles.button}
-          onPress={() => navigation.navigate('registro')}>
+          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('registro')}>
             <Text style={styles.botonregistro}>Cree una</Text>
           </TouchableOpacity>
         </View>

@@ -1,11 +1,6 @@
 import React,{Component} from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  TextInput,
-  TouchableOpacity
-} from 'react-native';
+import {StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+
 
 export default class Form extends Component<{}>{
 	render(){
@@ -23,7 +18,7 @@ export default class Form extends Component<{}>{
           secureTextEntry={true}
           placeholderTextColor="#4A1616"
           ref={(input)=>this.password =input} />
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} >
           <Text style={styles.buttonText}>Iniciar Sesion</Text>
         </TouchableOpacity>
 			</View>
