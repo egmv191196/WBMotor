@@ -18,9 +18,7 @@ export default class Form extends Component<{}>{
           secureTextEntry={true}
           placeholderTextColor="#4A1616"
           ref={(input)=>this.password =input} />
-        <TouchableOpacity style={styles.button} >
-          <Text style={styles.buttonText}>Iniciar Sesion</Text>
-        </TouchableOpacity>
+        
 			</View>
 		)
 	}
