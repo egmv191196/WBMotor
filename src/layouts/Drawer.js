@@ -2,18 +2,33 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import perfil from './perfil'
 function Feed() {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Feed Screen</Text>
+        <Text>WBMotor Inicio</Text>
       </View>
     );
   }
   
-  function Article() {
+  function chatGeneral() {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <Text>Article Screen</Text>
+      </View>
+    );
+  }
+  function Marcas() {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <Text>Chat Marcas</Text>
+      </View>
+    );
+  }
+  function cerrarSesion() {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <Text>Ventana de cierre de sesion</Text>
       </View>
     );
   }
@@ -23,8 +38,11 @@ const Drawer = createDrawerNavigator();
 function MyDrawer() {
   return (
     <Drawer.Navigator>
-      <Drawer.Screen name="Feed" component={Feed} />
-      <Drawer.Screen name="Article" component={Article} />
+      <Drawer.Screen name="WBMotor" component={Feed} />
+      <Drawer.Screen name="Perfil" component={perfil}/>
+      <Drawer.Screen name="Chat General" component={chatGeneral} />
+      <Drawer.Screen name="Chat Marcas" component={Marcas} />
+      <Drawer.Screen name="Cerrar Sesion" component={cerrarSesion} />
     </Drawer.Navigator>
   );
 }
