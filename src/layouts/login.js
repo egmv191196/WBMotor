@@ -11,9 +11,9 @@ export default function App({ navigation }) {
     <View style={styles.container}>
         <Logo/>
         <Form/>
-        <Button
-          title="Iniciar Sesion" onPress={() => navigation.navigate('draw')}
-        />
+        <TouchableOpacity style={styles.button1}onPress={() => navigation.navigate('draw')} >
+          <Text style={styles.buttonText1}>Iniciar Sesion</Text>
+        </TouchableOpacity>
         <View style={styles.registar}>
           <Text style={styles.registarText}>¿No tiene una cuenta? </Text>
           <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('registro')}>
@@ -46,5 +46,18 @@ const styles = StyleSheet.create({
     color :"#6E0B0B",
     fontSize:20,
     fontWeight:'600'
+  },
+  button1:{
+    width:250,
+    backgroundColor:'rgba(0, 255, 255,0.6)',
+    borderRadius :25,
+    marginVertical: 15,
+    paddingVertical: 10
+  },
+  buttonText1: {
+    fontSize:20,
+    fontWeight:'500',
+    color :"#4A1616",
+    textAlign:'center'
   }
 });
