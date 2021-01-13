@@ -14,7 +14,7 @@ function Feed() {
   function chatGeneral() {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Article Screen</Text>
+        <Text>Chat General</Text>
       </View>
     );
   }

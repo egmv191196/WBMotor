@@ -17,7 +17,7 @@ export default function App({ navigation }) {
         <View style={styles.registar}>
           <Text style={styles.registarText}>¿No tiene una cuenta? </Text>
           <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('registro')}>
-            <Text style={styles.botonregistro}>Cree una</Text>
+            <Text style={styles.botonregistro}>Crear una cuenta</Text>
           </TouchableOpacity>
         </View>
       </View>
