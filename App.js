@@ -9,6 +9,7 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator,StatusBar } from '@react-navigation/stack'
+import loading from './src/layouts/loading'
 import login from './src/layouts/login'
 import registro from './src/layouts/register'
 import ventana from './src/layouts/ventana'
@@ -17,6 +18,9 @@ const Stack = createStackNavigator();
 function MyStack() {
   return (
     <Stack.Navigator>
+      <Stack.Screen name="loading" component={loading} options={{ 
+        headerShown: false
+       }}/>
       <Stack.Screen name="login" component={login} options={{ 
         headerShown: false
        }}/>
