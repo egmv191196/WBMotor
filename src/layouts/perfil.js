@@ -1,5 +1,11 @@
 import React from 'react';
 import { SafeAreaView, StyleSheet, ScrollView, View, Text, StatusBar, Image,Button} from 'react-native';
+import auth from '@react-native-firebase/auth';
+cerrarSesion = () => {
+    auth()
+    .signOut()
+    .then(() => console.log('User signed out!'));
+  }
 const App = () => {
   return (
     <View style={styles.container}>
@@ -32,7 +38,9 @@ const App = () => {
                 </View>
 	    </View>
         <View style={styles.boton} >
-            <Button title="Editar perfil"/>
+            <Button title="Editar perfil"
+                onPress={this.cerrarSesion.bind(this)}
+            />
         </View>
     </View>
   );

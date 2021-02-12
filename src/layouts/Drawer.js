@@ -37,8 +37,11 @@ const Drawer = createDrawerNavigator();
 
 function MyDrawer() {
   return (
+    
     <Drawer.Navigator>
-      <Drawer.Screen name="WBMotor" component={Feed} />
+      <Drawer.Screen name="WBMotor" component={Feed} 
+
+      />
       <Drawer.Screen name="Perfil" component={perfil}/>
       <Drawer.Screen name="Chat General" component={chatGeneral} />
       <Drawer.Screen name="Chat Marcas" component={Marcas} />
