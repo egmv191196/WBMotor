@@ -34,6 +34,14 @@ export default function App({ navigation }) {
   return (
     <View style={styles.container}>
         <Logo/>
+        <Text style={styles.inicio}>Iniciar Sesión</Text>
+
+        <View style={styles.registar}>
+          <Text style={styles.registarText}>¿Eres un nuevo usuario? </Text>
+          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('registro')}>
+            <Text style={styles.botonregistro}>Crear una cuenta</Text>
+          </TouchableOpacity>
+        </View>
         <TextInput style={styles.inputBox}
           underlineColorAndroid='rgba(0,0,0,0)'
           placeholder="E-mail"
@@ -52,12 +60,16 @@ export default function App({ navigation }) {
         <TouchableOpacity style={styles.button1} onPress={this.handleLogin.bind(this)} >
           <Text style={styles.buttonText1}>Iniciar Sesion</Text>
         </TouchableOpacity>
-        <View style={styles.registar}>
-          <Text style={styles.registarText}>¿No tiene una cuenta? </Text>
-          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('registro')}>
-            <Text style={styles.botonregistro}>Registrate</Text>
-          </TouchableOpacity>
-        </View>
+        <Text style={styles.ooo}>o</Text>
+        <TouchableOpacity style={styles.button1} onPress={this.handleLogin.bind(this)} >
+          <Text style={styles.buttonText1}>Continuar con google</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button1} onPress={this.handleLogin.bind(this)} >
+          <Text style={styles.buttonText1}>Continuar con facebook</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button1} onPress={this.handleLogin.bind(this)} >
+          <Text style={styles.buttonText1}>Continuar con Apple</Text>
+        </TouchableOpacity>
       </View>
   );
 }
@@ -71,26 +83,28 @@ const styles = StyleSheet.create({
   },
   registar:{
     flexGrow: 1,
-    alignItems:'flex-end',
     justifyContent:'center' ,
-    paddingVertical:15,
-    flexDirection:'row'
+    flexDirection:'row',
+     marginVertical: 3
+  },
+  inicio:{
+    fontSize:25,
   },
   registarText :{
     color :"#4A1616",
-    fontSize:20
+    fontSize:10
   },
   botonregistro: {
     color :"#6E0B0B",
-    fontSize:20,
+    fontSize:10,
     fontWeight:'600'
   },
   button1:{
     width:250,
     backgroundColor:'rgba(0, 255, 255,0.6)',
     borderRadius :25,
-    marginVertical: 15,
-    paddingVertical: 10
+    marginVertical: 5,
+    paddingVertical: 5
   },
   buttonText1: {
     fontSize:20,
@@ -102,9 +116,13 @@ const styles = StyleSheet.create({
     width:250,
     backgroundColor:'rgba(0, 255, 255,0.2)',
     borderRadius :25,
-    paddingHorizontal :15,
+    paddingHorizontal :5,
     fontSize:20,
     color:"#4A1616",
-    marginVertical: 15
-  }
+    marginVertical: 5
+  },
+  ooo:{
+    fontSize:20,
+    textAlign:'center'
+  },
 });
