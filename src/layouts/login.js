@@ -7,6 +7,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Logo from '../components/Logo';
 import draw from './Drawer';
 import { useState } from 'react';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import AwesomeIcon from 'react-native-vector-icons/FontAwesome';
 export default function App({ navigation }) {
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
@@ -34,11 +36,10 @@ export default function App({ navigation }) {
   return (
     <View style={styles.container}>
         <Logo/>
-        <Text style={styles.inicio}>Iniciar Sesión</Text>
 
         <View style={styles.registar}>
-          <Text style={styles.registarText}>¿Eres un nuevo usuario? </Text>
-          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('registro')}>
+          <Text style={styles.registarText}>¿No tiene una cuenta?  </Text>
+          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Crear una cuenta')}>
             <Text style={styles.botonregistro}>Crear una cuenta</Text>
           </TouchableOpacity>
         </View>
@@ -61,15 +62,17 @@ export default function App({ navigation }) {
           <Text style={styles.buttonText1}>Iniciar Sesion</Text>
         </TouchableOpacity>
         <Text style={styles.ooo}>o</Text>
-        <TouchableOpacity style={styles.button1} onPress={this.handleLogin.bind(this)} >
-          <Text style={styles.buttonText1}>Continuar con google</Text>
+        <TouchableOpacity style={styles.button2}>
+          <Icon.Button class="fab fa-google" backgroundColor="#db4a39">
+          <Text style={{fontFamily: 'Arial', fontSize: 15}}>Iniciar con Google</Text>
+         </Icon.Button>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button1} onPress={this.handleLogin.bind(this)} >
-          <Text style={styles.buttonText1}>Continuar con facebook</Text>
+        <TouchableOpacity style={styles.button2}>
+          <Icon.Button class="fab fa-facebook-f" backgroundColor="#3b5998">
+          <Text style={{fontFamily: 'Arial', fontSize: 15}}>Iniciar con Facebook</Text>
+         </Icon.Button>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button1} onPress={this.handleLogin.bind(this)} >
-          <Text style={styles.buttonText1}>Continuar con Apple</Text>
-        </TouchableOpacity>
+        
       </View>
   );
 }
@@ -102,6 +105,12 @@ const styles = StyleSheet.create({
   button1:{
     width:250,
     backgroundColor:'rgba(0, 255, 255,0.6)',
+    borderRadius :25,
+    marginVertical: 5,
+    paddingVertical: 5
+  },
+  button2:{
+    width:250,
     borderRadius :25,
     marginVertical: 5,
     paddingVertical: 5
