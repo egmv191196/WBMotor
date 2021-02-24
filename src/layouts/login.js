@@ -109,19 +109,9 @@ async function onGoogleButtonPress() {
           <Text style={styles.buttonText1}>Iniciar Sesion</Text>
         </TouchableOpacity>
         <Text style={styles.ooo}>o</Text>
-        <Button
-          title="Google Sign-In"
-          onPress={() => onGoogleButtonPress().then(() => console.log('Signed in with Google!'))}
-        />
-
-        <Button
-        title="Facebook Sign-In"
-        onPress={() => onFacebookButtonPress().then(() => console.log('Signed in with Facebook!'))}
-      />
-        <TouchableOpacity style={styles.button2}>
-          <Icon.Button class="fab fa-google" backgroundColor="#db4a39">
-          <Text style={{fontFamily: 'Arial', fontSize: 15}}>Iniciar con Google</Text>
-         </Icon.Button>
+        
+        <TouchableOpacity style={styles.button2} onPress={() => onGoogleButtonPress().then(() => console.log('Signed in with Google!'))}>
+           <Text style={{fontFamily: 'Arial', fontSize: 15, textAlign:'center'}}>Iniciar con Google</Text>
         </TouchableOpacity>
         <LoginButton
           onLoginFinished={
@@ -141,10 +131,10 @@ async function onGoogleButtonPress() {
           }
           onLogoutFinished={() => console.log("logout.")}/>
 
-        <TouchableOpacity style={styles.button2}>
-          <Icon.Button class="fab fa-facebook-f" backgroundColor="#3b5998">
-          <Text style={{fontFamily: 'Arial', fontSize: 15}}>Iniciar con Facebook</Text>
-         </Icon.Button>
+        <TouchableOpacity style={styles.button3} onPress={() => onFacebookButtonPress().then(() => console.log('Signed in with Facebook!'))}>
+         
+          <Text style={{fontFamily: 'Arial', fontSize: 15,textAlign:'center'}}>Iniciar con Facebook</Text>
+         
         </TouchableOpacity>
         
       </View>
@@ -185,6 +175,14 @@ const styles = StyleSheet.create({
   },
   button2:{
     width:250,
+    borderRadius :25,
+    backgroundColor:'#db4a39',
+    marginVertical: 5,
+    paddingVertical: 5
+  },
+  button3:{
+    width:250,
+    backgroundColor:'#3b5998',
     borderRadius :25,
     marginVertical: 5,
     paddingVertical: 5
