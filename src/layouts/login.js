@@ -1,6 +1,6 @@
 import React from 'react';
 import { StatusBar } from 'react-native'
-import { StyleSheet, Text, View, TouchableOpacity,TextInput} from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity,TextInput,Button} from 'react-native';
 import auth from '@react-native-firebase/auth';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -9,11 +9,15 @@ import draw from './Drawer';
 import { useState } from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import AwesomeIcon from 'react-native-vector-icons/FontAwesome';
+import { LoginButton, AccessToken,LoginManager } from 'react-native-fbsdk';
+import { GoogleSignin } from '@react-native-community/google-signin';
+
 export default function App({ navigation }) {
+  GoogleSignin.configure({
+    webClientId: '971209811374-i87lb1sr3gss0v53ge2r5bj91j6ah0b4.apps.googleusercontent.com',
+  });
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
-
-  
   //Funcion para el login
   //si funciona con .createUserWithEmailAndPassword crea un usuario e inicia sesion
   handleLogin = () => {
@@ -32,7 +36,50 @@ export default function App({ navigation }) {
       console.error(error,email,pass);
     });
   }
+  //Funcion para inicar Sesion con Facebook-------
+  function FacebookSignIn() {
+    return (
+      <Button
+        title="Facebook Sign-In"
+        onPress={() => onFacebookButtonPress().then(() => console.log('Signed in with Facebook!'))}
+      />
+    );
+  }
+  //PArte 2
+  async function onFacebookButtonPress() {
+    // Attempt login with permissions
+    const result = await LoginManager.logInWithPermissions(['public_profile', 'email']);
+  
+    if (result.isCancelled) {
+      throw 'User cancelled the login process';
+    }
+  
+    // Once signed in, get the users AccesToken
+    const data = await AccessToken.getCurrentAccessToken();
+  
+    if (!data) {
+      throw 'Something went wrong obtaining access token';
+    }
+  
+    // Create a Firebase credential with the AccessToken
+    const facebookCredential = auth.FacebookAuthProvider.credential(data.accessToken);
+  
+    // Sign-in the user with the credential
+    return auth().signInWithCredential(facebookCredential);
+  }
+  //------- END Facebook-----------------
+//-------Gogogle
+async function onGoogleButtonPress() {
+  // Get the users ID token
+  const { idToken } = await GoogleSignin.signIn();
 
+  // Create a Google credential with the token
+  const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+
+  // Sign-in the user with the credential
+  return auth().signInWithCredential(googleCredential);
+}
+//google
   return (
     <View style={styles.container}>
         <Logo/>
@@ -62,11 +109,38 @@ export default function App({ navigation }) {
           <Text style={styles.buttonText1}>Iniciar Sesion</Text>
         </TouchableOpacity>
         <Text style={styles.ooo}>o</Text>
+        <Button
+          title="Google Sign-In"
+          onPress={() => onGoogleButtonPress().then(() => console.log('Signed in with Google!'))}
+        />
+
+        <Button
+        title="Facebook Sign-In"
+        onPress={() => onFacebookButtonPress().then(() => console.log('Signed in with Facebook!'))}
+      />
         <TouchableOpacity style={styles.button2}>
           <Icon.Button class="fab fa-google" backgroundColor="#db4a39">
           <Text style={{fontFamily: 'Arial', fontSize: 15}}>Iniciar con Google</Text>
          </Icon.Button>
         </TouchableOpacity>
+        <LoginButton
+          onLoginFinished={
+            (error, result) => {
+              if (error) {
+                console.log("login has error: " + result.error);
+              } else if (result.isCancelled) {
+                console.log("login is cancelled.");
+              } else {
+                AccessToken.getCurrentAccessToken().then(
+                  (data) => {
+                    console.log(data.accessToken.toString())
+                  }
+                )
+              }
+            }
+          }
+          onLogoutFinished={() => console.log("logout.")}/>
+
         <TouchableOpacity style={styles.button2}>
           <Icon.Button class="fab fa-facebook-f" backgroundColor="#3b5998">
           <Text style={{fontFamily: 'Arial', fontSize: 15}}>Iniciar con Facebook</Text>
