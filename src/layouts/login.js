@@ -10,7 +10,7 @@ import { useState } from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import AwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import { LoginButton, AccessToken,LoginManager } from 'react-native-fbsdk';
-import { GoogleSignin } from '@react-native-community/google-signin';
+import { GoogleSignin,GoogleSigninButton} from '@react-native-community/google-signin';
 
 export default function App({ navigation }) {
   GoogleSignin.configure({
@@ -109,33 +109,27 @@ async function onGoogleButtonPress() {
           <Text style={styles.buttonText1}>Iniciar Sesion</Text>
         </TouchableOpacity>
         <Text style={styles.ooo}>o</Text>
-        
-        <TouchableOpacity style={styles.button2} onPress={() => onGoogleButtonPress().then(() => console.log('Signed in with Google!'))}>
-           <Text style={{fontFamily: 'Arial', fontSize: 15, textAlign:'center'}}>Iniciar con Google</Text>
-        </TouchableOpacity>
-        <LoginButton
-          onLoginFinished={
-            (error, result) => {
-              if (error) {
-                console.log("login has error: " + result.error);
-              } else if (result.isCancelled) {
-                console.log("login is cancelled.");
-              } else {
-                AccessToken.getCurrentAccessToken().then(
-                  (data) => {
-                    console.log(data.accessToken.toString())
-                  }
-                )
-              }
-            }
-          }
-          onLogoutFinished={() => console.log("logout.")}/>
 
+        <GoogleSigninButton
+          style={{ width: 250, height: 50 }}
+          size={GoogleSigninButton.Size.Wide}
+          color={GoogleSigninButton.Color.Dark}
+          onPress={() => onGoogleButtonPress().then(() => console.log('Signed in with Google!'))}>
+        </GoogleSigninButton>
+        <FontAwesome.Button
+        style={styles.facebookButton}>
+
+        </FontAwesome.Button>
         <TouchableOpacity style={styles.button3} onPress={() => onFacebookButtonPress().then(() => console.log('Signed in with Facebook!'))}>
          
           <Text style={{fontFamily: 'Arial', fontSize: 15,textAlign:'center'}}>Iniciar con Facebook</Text>
          
         </TouchableOpacity>
+
+
+        
+
+        
         
       </View>
   );
