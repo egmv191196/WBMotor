@@ -113,7 +113,7 @@ async function onGoogleButtonPress() {
         <GoogleSigninButton
           style={{ width: 250, height: 50 }}
           size={GoogleSigninButton.Size.Wide}
-          color={GoogleSigninButton.Color.Dark}
+          color={GoogleSigninButton.Color.Light}
           onPress={() => onGoogleButtonPress().then(() => console.log('Signed in with Google!'))}>
         </GoogleSigninButton>
         <LoginButton
