@@ -116,10 +116,7 @@ async function onGoogleButtonPress() {
           color={GoogleSigninButton.Color.Dark}
           onPress={() => onGoogleButtonPress().then(() => console.log('Signed in with Google!'))}>
         </GoogleSigninButton>
-        <FontAwesome.Button
-        style={styles.facebookButton}>
-
-        </FontAwesome.Button>
+        <LoginButton></LoginButton>
         <TouchableOpacity style={styles.button3} onPress={() => onFacebookButtonPress().then(() => console.log('Signed in with Facebook!'))}>
          
           <Text style={{fontFamily: 'Arial', fontSize: 15,textAlign:'center'}}>Iniciar con Facebook</Text>
