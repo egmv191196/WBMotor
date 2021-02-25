@@ -116,18 +116,26 @@ async function onGoogleButtonPress() {
           color={GoogleSigninButton.Color.Dark}
           onPress={() => onGoogleButtonPress().then(() => console.log('Signed in with Google!'))}>
         </GoogleSigninButton>
-        <LoginButton></LoginButton>
-        <TouchableOpacity style={styles.button3} onPress={() => onFacebookButtonPress().then(() => console.log('Signed in with Facebook!'))}>
-         
-          <Text style={{fontFamily: 'Arial', fontSize: 15,textAlign:'center'}}>Iniciar con Facebook</Text>
-         
-        </TouchableOpacity>
-
-
-        
-
-        
-        
+        <LoginButton
+          style={{ width: 250, height: 40, marginBottom: 10}}
+          onPress={() => onFacebookButtonPress().then(() => console.log('Signed in with Facebook!'))}
+          onLoginFinished={
+            (error, result) => {
+              if (error) {
+                console.log("login has error: " + result.error);
+              } else if (result.isCancelled) {
+                console.log("login is cancelled.");
+              } else {
+                AccessToken.getCurrentAccessToken().then(
+                  (data) => {
+                    console.log(data.accessToken.toString())
+                  }
+                )
+              }
+            }
+          }
+          onLogoutFinished={() => console.log("logout.")}/>
+          
       </View>
   );
 }
