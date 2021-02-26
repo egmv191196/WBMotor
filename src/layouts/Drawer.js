@@ -3,6 +3,8 @@ import { View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import perfil from './perfil'
+import menu from './Menu'
+import cerrar from './cerrar'
 function Feed() {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -39,13 +41,13 @@ function MyDrawer() {
   return (
     
     <Drawer.Navigator>
-      <Drawer.Screen name="WBMotor" component={Feed} 
+      <Drawer.Screen name="WBMotor" component={menu} 
 
       />
       <Drawer.Screen name="Perfil" component={perfil}/>
       <Drawer.Screen name="Chat General" component={chatGeneral} />
       <Drawer.Screen name="Chat Marcas" component={Marcas} />
-      <Drawer.Screen name="Cerrar Sesion" component={cerrarSesion} />
+      <Drawer.Screen name="Cerrar Sesion" component={cerrar} />
     </Drawer.Navigator>
   );
 }
