@@ -5,16 +5,9 @@ const App = () => {
   return (
     <View>
         <View style={styles.container}>
-        <Image style={{width:100,height:100}}
-		source={require('../imagenes/motor.png')} />
-		<Text style={styles.logoText}>Bienvenido</Text>
+          <Image style={{width:100,height:100}} source={require('../imagenes/motor.png')} />
+		      <Text style={styles.logoText}>Bienvenido</Text>
         </View > 
-        <Image style={{width:100,height:100}}
-		source={require('../imagenes/hy.png')} />
-        <Image style={{width:100,height:100}}
-		source={require('../imagenes/ho.png')} />
-        <Image style={{width:100,height:100}}
-		source={require('../imagenes/au.png')} />
     </View>
   );
 };
