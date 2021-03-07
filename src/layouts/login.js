@@ -10,7 +10,7 @@ import { useState } from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import AwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import { LoginButton, AccessToken,LoginManager } from 'react-native-fbsdk';
-import { GoogleSignin } from '@react-native-community/google-signin';
+import { GoogleSignin,GoogleSigninButton} from '@react-native-community/google-signin';
 
 export default function App({ navigation }) {
   GoogleSignin.configure({
@@ -109,21 +109,16 @@ async function onGoogleButtonPress() {
           <Text style={styles.buttonText1}>Iniciar Sesion</Text>
         </TouchableOpacity>
         <Text style={styles.ooo}>o</Text>
-        <Button
-          title="Google Sign-In"
-          onPress={() => onGoogleButtonPress().then(() => console.log('Signed in with Google!'))}
-        />
 
-        <Button
-        title="Facebook Sign-In"
-        onPress={() => onFacebookButtonPress().then(() => console.log('Signed in with Facebook!'))}
-      />
-        <TouchableOpacity style={styles.button2}>
-          <Icon.Button class="fab fa-google" backgroundColor="#db4a39">
-          <Text style={{fontFamily: 'Arial', fontSize: 15}}>Iniciar con Google</Text>
-         </Icon.Button>
-        </TouchableOpacity>
+        <GoogleSigninButton
+          style={{ width: 250, height: 50 }}
+          size={GoogleSigninButton.Size.Wide}
+          color={GoogleSigninButton.Color.Light}
+          onPress={() => onGoogleButtonPress().then(() => console.log('Signed in with Google!'))}>
+        </GoogleSigninButton>
         <LoginButton
+          style={{ width: 250, height: 40, marginBottom: 10}}
+          onPress={() => onFacebookButtonPress().then(() => console.log('Signed in with Facebook!'))}
           onLoginFinished={
             (error, result) => {
               if (error) {
@@ -140,13 +135,7 @@ async function onGoogleButtonPress() {
             }
           }
           onLogoutFinished={() => console.log("logout.")}/>
-
-        <TouchableOpacity style={styles.button2}>
-          <Icon.Button class="fab fa-facebook-f" backgroundColor="#3b5998">
-          <Text style={{fontFamily: 'Arial', fontSize: 15}}>Iniciar con Facebook</Text>
-         </Icon.Button>
-        </TouchableOpacity>
-        
+          
       </View>
   );
 }
@@ -185,6 +174,14 @@ const styles = StyleSheet.create({
   },
   button2:{
     width:250,
+    borderRadius :25,
+    backgroundColor:'#db4a39',
+    marginVertical: 5,
+    paddingVertical: 5
+  },
+  button3:{
+    width:250,
+    backgroundColor:'#3b5998',
     borderRadius :25,
     marginVertical: 5,
     paddingVertical: 5
